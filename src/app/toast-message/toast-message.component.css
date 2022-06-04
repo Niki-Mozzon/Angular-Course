@@ -1,0 +1,49 @@
+.toast {
+  border-radius: 5px 0 0 5px;
+  border-color: transparent;
+  transition: opacity 2s;
+  margin-block: 5px;
+}
+
+.toast-container {
+  position: relative;
+  display: flex;
+}
+
+.btn-toast-close {
+  margin: 0.5rem 1.5rem;
+  height: fit-content;
+  width: fit-content;
+  cursor: pointer;
+  padding-inline: 4px;
+  border-radius: 5px;
+}
+
+.btn-toast-close:hover {
+  border-color: white;
+}
+
+.toast-message {
+  display: inline;
+  margin: 2rem;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.toast-danger {
+  background-color: rgb(206, 59, 59);
+}
+
+.toast-success {
+  background-color: rgb(60, 218, 112);
+}
+
+.toast-warning {
+  background-color: rgb(249, 204, 41);
+}
+
+.toast-primary {
+  background-color: rgb(70, 139, 249);
+}

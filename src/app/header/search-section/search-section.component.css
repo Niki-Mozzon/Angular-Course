@@ -1,0 +1,26 @@
+.search-container {
+  background-color: orange;
+  float: right;
+  padding: 1rem;
+  margin-right: 5rem;
+  margin-top: 5rem;
+  padding: 1.5rem;
+  border-radius: 2px;
+}
+
+.btn-search {
+  background-color: transparent;
+  border: none;
+}
+
+input[type="text"] {
+  background-color: rgb(44, 44, 44);
+  border-radius: 10px;
+  border: none;
+  padding: 4px;
+}
+
+.searchbox {
+  width: 300px;
+  margin-right: 1rem;
+}

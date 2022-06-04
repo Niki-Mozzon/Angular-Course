@@ -1,0 +1,33 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: initial;
+}
+
+.header {
+  background-color: orange;
+}
+
+.logo-container {
+  height: 4rem;
+  background-color: red;
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  margin-inline: 1rem;
+  min-height: auto;
+  margin-bottom: unset;
+}
+
+.navbar__item {
+  display: inline;
+  margin-inline: 1rem;
+  color: black;
+}
