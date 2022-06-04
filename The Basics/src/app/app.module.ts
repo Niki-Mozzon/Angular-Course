@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { ToastMessageComponent } from './toast-message/toast-message.component';
 import { SearchSectionComponent } from './header/search-section/search-section.component';
 import { ToasterComponent } from './toaster.component/toaster.component';
+import { AssignmentComponent } from './assignment/assignment.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ToasterComponent } from './toaster.component/toaster.component';
     ToastMessageComponent,
     SearchSectionComponent,
     ToasterComponent,
+    AssignmentComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

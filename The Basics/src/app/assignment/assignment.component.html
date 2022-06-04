@@ -1,0 +1,13 @@
+<button (click)="toggleVisibility()" style="color: black">
+  Display details
+</button>
+<p *ngIf="!hidden">Sta vita è una merda</p>
+<ul>
+  <li
+    [ngClass]="getRule(swear) == true ? '' : 'green-text'"
+    [ngStyle]="{ backgroundColor: getRule(swear) == true ? 'red' : 'blue' }"
+    *ngFor="let swear of swearing"
+  >
+    {{ swear }}
+  </li>
+</ul>
