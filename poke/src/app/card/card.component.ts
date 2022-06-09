@@ -23,7 +23,7 @@ export class CardComponent implements OnInit {
     const api = new PokemonClient();
     const randomId = Math.floor(Math.random() * (898 - 1) + 1);
     console.log(randomId);
-    //const pokemon:Pokemon = await api.getPokemonById(877);
+    //const pokemon: Pokemon = await api.getPokemonById(808);
     const pokemon: Pokemon = await api.getPokemonById(randomId);
     pokemon.name = pokemon.name.split('-').join(' ');
     console.log(pokemon);
@@ -36,7 +36,7 @@ export class CardComponent implements OnInit {
       colors.push(typeP.type.name);
     });
     this.colors = types.filter((type) => colors.includes(type.name));
-    if (this.colors.length > 1) {
+    if (this.pokemon.types.length > 1) {
       this.color1 = this.colors[0].primaryColor;
       this.color2 = this.colors[1].primaryColor;
     } else {
