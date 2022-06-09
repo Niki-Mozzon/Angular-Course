@@ -1,25 +1,31 @@
 <div class="card">
-  <div class="card__content">
-      <div class="card__content__header">
-          <span class="card__content__header__id"> #{{pokemon.id}} </span>
-          <span class="card__content__header__center">
-              <img class="card__content__header__type" *ngFor="let type of pokemon.types" src="assets/static/img/types/{{type.type.name}}.png" alt="{{type.type.name}}">  
-          </span>
-          <span class="card__content__header__right">
-           
-            <span class="card__content__header__name">
-                  {{ pokemon.name }}
-                </span>
-                <img
-                class="card__content__header__sprite"
-                src="{{ pokemon.sprites.front_default }}"
-                alt=""
-                />
-            </span>
-        </div>
-        <img src="{{pokemon.sprites.other['official-artwork'].front_default}}" class="card__content__image"  alt="">
-    <div class="card__content__desc">
-        ciao
+  <div class="card__content" [style]="styleString">
+    <div class="card__content__header">
+      <span class="card__content__header__id"> #{{ pokemon.id }} </span>
+      <span class="card__content__header__center">
+        <img
+          class="card__content__header__type"
+          *ngFor="let type of pokemon.types"
+          src="assets/static/img/types/{{ type.type.name }}.png"
+          alt="{{ type.type.name }}"
+        />
+      </span>
+      <span class="card__content__header__right">
+        <span class="card__content__header__name">
+          {{ pokemon.name }}
+        </span>
+        <img
+          class="card__content__header__sprite"
+          src="{{ pokemon.sprites.front_default }}"
+          alt=""
+        />
+      </span>
     </div>
+    <img
+      src="{{ pokemon.sprites.other['official-artwork'].front_default }}"
+      class="card__content__image"
+      alt=""
+    />
+    <div class="card__content__desc">ciao</div>
   </div>
 </div>

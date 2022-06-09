@@ -9,9 +9,5 @@ import { Pokemon, PokemonClient } from 'pokenode-ts';
 export class AppComponent {
   title = 'poke';
 
-  constructor(){
-  }
-
-
-  
+  constructor() {}
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Pokemon, PokemonClient } from 'pokenode-ts';
+import { Type, types } from 'src/assets/static/variables/types';
 
 @Component({
   selector: 'poke-card',
@@ -9,22 +10,19 @@ import { Pokemon, PokemonClient } from 'pokenode-ts';
 export class CardComponent implements OnInit {
   pokemon!: Pokemon;
 
-  spriteMini: string | null = '';
-  pokeId?: number;
-  pokeName = '';
-
+  colors: Type[] = [];
+  color1 = '';
+  color2 = '';
+  styleString = ``;
   async ngOnInit() {
-    this.pokemon = await await this.getPokemons();
-    /* this.pokeId=this.pokemon.id;
-         this.pokeName=this.pokemon.name;
-         this.spriteMini=this.pokemon.sprites.front_default; */
+    this.pokemon = await this.getPokemons();
+    this.getColors();
   }
 
   async getPokemons() {
     const api = new PokemonClient();
     const randomId = Math.floor(Math.random() * (898 - 1) + 1);
     console.log(randomId);
-
     //const pokemon:Pokemon = await api.getPokemonById(877);
     const pokemon: Pokemon = await api.getPokemonById(randomId);
     pokemon.name = pokemon.name.split('-').join(' ');
@@ -34,8 +32,19 @@ export class CardComponent implements OnInit {
 
   getColors() {
     const colors: string[] = new Array();
-    this.pokemon.types.forEach((type) => {
-      colors.push(type.type.name);
+    this.pokemon.types.map((typeP) => {
+      colors.push(typeP.type.name);
     });
+    this.colors = types.filter((type) => colors.includes(type.name));
+    if (this.colors.length > 1) {
+      this.color1 = this.colors[0].primaryColor;
+      this.color2 = this.colors[1].primaryColor;
+    } else {
+      this.color1 = this.colors[0].primaryColor;
+      this.color2 = this.colors[0].secondaryColor;
+    }
+    console.log(this.color1);
+    console.log(this.color2);
+    this.styleString = `background-image: linear-gradient(200deg, #${this.color1}, #${this.color2})`;
   }
 }
