@@ -1,0 +1,10 @@
+.deck-row{
+    display: flex;
+    flex-wrap: wrap;
+    order: 5;
+    margin: auto;
+  width: 108rem;
+    gap: 2rem;
+    transform: translateY(10vh);
+    
+}
