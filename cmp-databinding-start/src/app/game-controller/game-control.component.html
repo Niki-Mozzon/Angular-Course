@@ -1,0 +1,7 @@
+<button (click)="onStart()" class="btn">Start</button>
+<button (click)="onStop()" class="btn">Stop</button>
+<p *ngFor="let num of nums">
+  ciao
+  <even style="color: blue" *ngIf="num % 2 == 0">{{ num }}</even>
+  <odd style="color: red" *ngIf="num % 2 != 0">{{ num }}</odd>
+</p>

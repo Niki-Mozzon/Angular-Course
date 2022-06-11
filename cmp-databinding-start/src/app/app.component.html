@@ -1,6 +1,8 @@
 <div class="container">
-  <cockpit (serverCreated)="onAddServer($event)"
-  (blueprintCreated)="onAddBlueprint($event)"></cockpit>
+  <cockpit
+    (serverCreated)="onAddServer($event)"
+    (blueprintCreated)="onAddBlueprint($event)"
+  ></cockpit>
   <hr />
   <div class="row">
     <div class="col-xs-12">
@@ -11,3 +13,5 @@
     </div>
   </div>
 </div>
+
+<game-control></game-control>
