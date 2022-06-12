@@ -1,6 +1,6 @@
 <button (click)="onStart()" class="btn">Start</button>
 <button (click)="onStop()" class="btn">Stop</button>
-<p *ngFor="let num of nums">
+<div *ngFor="let num of nums">
   <span basicBackground>Working on basic directives..</span>
   <br />
   <span betterBackground>Working on better directives with Renderer2..</span>
@@ -10,4 +10,10 @@
   >
   <even style="color: blue" *appUnless="num % 2 != 0">{{ num }}</even>
   <odd style="color: red" *ngIf="num % 2 != 0">{{ num }}</odd>
-</p>
+  <div [ngSwitch]="num">
+    <p *ngSwitchCase="7">Bigger that 7</p>
+    <p *ngSwitchCase="5">Bigger that 5</p>
+    <p *ngSwitchCase="3">Bigger that 3</p>
+    <p *ngSwitchDefault>Default</p>
+  </div>
+</div>
