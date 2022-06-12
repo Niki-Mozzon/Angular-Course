@@ -1,11 +1,18 @@
-import { Directive, HostBinding, OnInit } from "@angular/core";
+import { Directive, HostBinding, Input, OnInit } from "@angular/core";
 
 @Directive({
   selector: "[easierBackground]",
 })
 export class EasierBackgroundDirective implements OnInit {
-  ngOnInit(): void {}
+  @Input()
+  backgroundColor;
   @HostBinding("style.backgroundColor")
-  backgroundColor = "orangered";
+  backgroundColorDefault;
+  @Input()
+  @HostBinding("style.color")
+  color;
+  ngOnInit(): void {
+    this.backgroundColorDefault = this.backgroundColor;
+  }
   constructor() {}
 }
