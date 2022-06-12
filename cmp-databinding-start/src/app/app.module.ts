@@ -11,6 +11,7 @@ import { GameControlComponent } from "./game-controller/game-control.component";
 import { BasicBackgroundDirective } from "./basic-background/basic-background.directive";
 import { BetterBackgroundDirective } from "./basic-background/better-background.directive";
 import { EasierBackgroundDirective } from "./basic-background/easier-background.directive";
+import { UnlessDirective } from "./structural-directives/unless.directive";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EasierBackgroundDirective } from "./basic-background/easier-background.
     BasicBackgroundDirective,
     BetterBackgroundDirective,
     EasierBackgroundDirective,
+    UnlessDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
