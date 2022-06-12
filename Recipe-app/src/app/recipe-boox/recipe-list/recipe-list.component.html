@@ -7,21 +7,9 @@
 <div class="row">
   <div class="col-xs-12">
     <recipe-item
+      (recipeSelected)="onSelectedRecipe(recipe)"
       *ngFor="let recipe of recipes"
       [recipeItem]="recipe"
     ></recipe-item>
-    <!-- <div class="pull-left">
-        <h4 class="list-grout-item-heading">{{ recipe.name }}</h4>
-        <p class="list-group-item-text">{{ recipe.description }}</p>
-      </div>
-      <span class="pull-right">
-        <img
-          class="img-responsive"
-          [src]="recipe.imagePath"
-          alt=""
-          style="max-height: 50px"
-        />
-      </span> -->
-    <recipe-item></recipe-item>
   </div>
 </div>

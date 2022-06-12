@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipeBookComponent } from './recipe-boox/recipe-boox.component';
+import { RecipeBookComponent } from './recipe-boox/recipe-book.component';
 import { RecipeDetailComponent } from './recipe-boox/recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe-boox/recipe-list/recipe-item/recipe-item.component';
 import { RecipeListComponent } from './recipe-boox/recipe-list/recipe-list.component';

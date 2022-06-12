@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-5">
+    <recipe-list (recipeOnSelected)="setRecipe($event)"></recipe-list>
+  </div>
+  <div class="col-md-7">
+    <recipe-detail
+      *ngIf="focusRecipe != null; else infoText"
+      [recipe]="focusRecipe"
+    ></recipe-detail>
+    <ng-template #infoText>
+      <p>Please select a recipe</p>
+    </ng-template>
+  </div>
+</div>
