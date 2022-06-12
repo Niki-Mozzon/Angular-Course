@@ -1,9 +1,13 @@
-<header-app></header-app>
+<header-app (select)="display($event)"></header-app>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <recipe-boox></recipe-boox>
-      <shopping-list></shopping-list>
+      <recipe-boox
+        *ngIf="pageToDisplay == '' || pageToDisplay == 'recipeList'"
+      ></recipe-boox>
+      <shopping-list
+        *ngIf="pageToDisplay == '' || pageToDisplay == 'shoppingList'"
+      ></shopping-list>
     </div>
   </div>
 </div>
