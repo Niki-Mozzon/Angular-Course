@@ -11,15 +11,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSelectRecipeBook() {
-    this.select.emit('');
-  }
-
-  onSelectRecipeList() {
-    this.select.emit('recipeList');
-  }
-
-  onSelectShoppingList() {
-    this.select.emit('shoppingList');
+  onSelect(selection: string) {
+    this.select.emit(selection);
   }
 }
