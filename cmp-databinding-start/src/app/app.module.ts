@@ -8,6 +8,7 @@ import { ServerElementComponent } from "./server-element/server-element.componen
 import { EvenComponent } from "./Even/even.component";
 import { OddComponent } from "./odd/odd.component";
 import { GameControlComponent } from "./game-controller/game-control.component";
+import { BasicBackgroundDirective } from "./basic-background/basic-background.directive";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { GameControlComponent } from "./game-controller/game-control.component";
     EvenComponent,
     OddComponent,
     GameControlComponent,
+    BasicBackgroundDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
