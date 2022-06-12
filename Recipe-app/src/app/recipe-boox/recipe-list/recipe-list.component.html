@@ -6,9 +6,11 @@
 <hr />
 <div class="row">
   <div class="col-xs-12">
-    <a class="list-group-item clearfix" href="#" *ngFor="let recipe of recipes">
-      <recipe-item [recipe]="recipe"></recipe-item>
-      <!-- <div class="pull-left">
+    <recipe-item
+      *ngFor="let recipe of recipes"
+      [recipeItem]="recipe"
+    ></recipe-item>
+    <!-- <div class="pull-left">
         <h4 class="list-grout-item-heading">{{ recipe.name }}</h4>
         <p class="list-group-item-text">{{ recipe.description }}</p>
       </div>
@@ -20,7 +22,6 @@
           style="max-height: 50px"
         />
       </span> -->
-    </a>
     <recipe-item></recipe-item>
   </div>
 </div>
