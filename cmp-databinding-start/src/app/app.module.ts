@@ -10,6 +10,7 @@ import { OddComponent } from "./odd/odd.component";
 import { GameControlComponent } from "./game-controller/game-control.component";
 import { BasicBackgroundDirective } from "./basic-background/basic-background.directive";
 import { BetterBackgroundDirective } from "./basic-background/better-background.directive";
+import { EasierBackgroundDirective } from "./basic-background/easier-background.directive";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BetterBackgroundDirective } from "./basic-background/better-background.
     GameControlComponent,
     BasicBackgroundDirective,
     BetterBackgroundDirective,
+    EasierBackgroundDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
