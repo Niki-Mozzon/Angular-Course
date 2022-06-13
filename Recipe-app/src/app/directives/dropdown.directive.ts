@@ -1,9 +1,7 @@
 import {
   Directive,
   ElementRef,
-  HostBinding,
   HostListener,
-  Input,
   OnInit,
   Renderer2,
 } from '@angular/core';
