@@ -10,7 +10,7 @@ import { UsersService } from "./services/users.service";
 @NgModule({
   declarations: [AppComponent, ActiveUsersComponent, InactiveUsersComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [UsersService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
