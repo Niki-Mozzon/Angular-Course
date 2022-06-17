@@ -9,9 +9,15 @@ import { RecipeService } from './services/recipe.service';
   providers: [RecipeService],
 })
 export class RecipeBookComponent implements OnInit {
-  ngOnInit(): void {}
-
   focusRecipe!: Recipe;
+
+  constructor(private recipeService: RecipeService) {}
+
+  ngOnInit(): void {
+    this.recipeService.recipeSelected.subscribe((recipe: Recipe) => {
+      this.setRecipe(recipe);
+    });
+  }
 
   setRecipe(recipe: Recipe) {
     this.focusRecipe = recipe;
