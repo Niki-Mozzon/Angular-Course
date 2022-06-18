@@ -20,7 +20,8 @@ const appRoutes: Routes = [
     path: "users",
     component: UsersComponent,
     children: [{ path: ":id/:name", component: UserComponent }],
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard], //add authentication method that in order to let you navigate to that route must return true
+    canActivateChild: [AuthGuard], //add authentication method to all children of this route
   },
   {
     path: "servers",
