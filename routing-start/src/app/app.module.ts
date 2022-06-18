@@ -4,10 +4,11 @@ import { FormsModule } from "@angular/forms";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "users", component: UsersComponent },
   { path: "user/:id/:name", component: UserComponent },
-  { path: "servers", component: ServersComponent },
+  { path: "users", component: UsersComponent },
   { path: "servers/:id/edit", component: EditServerComponent },
+  { path: "servers/:id", component: ServerComponent },
+  { path: "servers", component: ServersComponent },
 ];
 
 import { AppComponent } from "./app.component";
