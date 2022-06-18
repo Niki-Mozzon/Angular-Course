@@ -1,3 +1,4 @@
+import { ValueConverter } from "@angular/compiler/src/render3/view/template";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 
@@ -24,7 +25,7 @@ export class EditServerComponent implements OnInit {
     console.log("Allow edit: " + this.allowEdit); //gets query parameters
     console.log(this.activatedRoute.snapshot.fragment); //gets fragment
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.allowEdit = params["allowEdit"];
+      this.allowEdit = params["allowEdit"] == 1 ? true : false;
     });
     this.activatedRoute.fragment.subscribe();
     this.server = this.serversService.getServer(1);

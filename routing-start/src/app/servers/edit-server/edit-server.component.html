@@ -1,4 +1,4 @@
-<div *ngIf="allowEdit === true">
+<div *ngIf="allowEdit == true">
   <div class="form-group">
     <label for="name">Server Name</label>
     <input
@@ -19,4 +19,4 @@
     Update Server
   </button>
 </div>
-<div *ngIf="allowEdit === false">You are not allowed to edit this item!</div>
+<div *ngIf="allowEdit != true">You are not allowed to edit this item!</div>
