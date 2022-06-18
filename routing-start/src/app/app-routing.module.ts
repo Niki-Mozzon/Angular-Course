@@ -5,6 +5,7 @@ import {
   Routes,
   RoutesRecognized,
 } from "@angular/router";
+import { AuthGuard } from "./auth-guard.service";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { EditServerComponent } from "./servers/edit-server/edit-server.component";
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     path: "users",
     component: UsersComponent,
     children: [{ path: ":id/:name", component: UserComponent }],
+    canActivate: [AuthGuard],
   },
   {
     path: "servers",
