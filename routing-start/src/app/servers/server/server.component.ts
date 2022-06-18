@@ -29,7 +29,7 @@ export class ServerComponent implements OnInit {
   onEdit() {
     this.router.navigate(["edit"], {
       relativeTo: this.activeRoute,
-      queryParamsHandling: "preserve",
+      queryParamsHandling: "preserve", //tells Angular to keep (ONLY) the queryParams on the new route
     });
   }
 }
