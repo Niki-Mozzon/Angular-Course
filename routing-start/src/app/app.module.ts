@@ -18,7 +18,7 @@ const appRoutes: Routes = [
     ],
   },
   { path: "not-found", component: PageNotFoundComponent },
-  { path: "**", redirectTo: "/not-found" },
+  { path: "**", redirectTo: "/not-found" }, //important to stay at the end, "**" is the "wild card" so any route not covered above this one is "**"
 ];
 
 import { AppComponent } from "./app.component";
