@@ -10,12 +10,15 @@ export class AuthService {
     this.authentication = false;
   }
 
-  isAuthenticated() {
+  /* isAuthenticated() {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.authentication);
       }, 1500);
     });
     return promise;
+  } */
+  isAuthenticated() {
+    return this.authentication;
   }
 }

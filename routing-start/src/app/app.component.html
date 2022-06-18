@@ -17,6 +17,22 @@
         <li role="presentation" routerLinkActive="active">
           <a routerLink="/users">Users</a>
         </li>
+        <li style="float: right" role="presentation">
+          <div>
+            <a
+              *ngIf="!authService.isAuthenticated()"
+              (click)="logIn()"
+              class="btn btn-default"
+              >Log in</a
+            >
+            <a
+              *ngIf="authService.isAuthenticated()"
+              (click)="logOut()"
+              class="btn"
+              >Log out</a
+            >
+          </div>
+        </li>
       </ul>
     </div>
   </div>
