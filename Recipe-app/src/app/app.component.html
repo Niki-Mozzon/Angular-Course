@@ -2,12 +2,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <recipe-book
+      <router-outlet></router-outlet>
+      <!--  <recipe-book
         *ngIf="pageToDisplay == '' || pageToDisplay == 'recipeList'"
       ></recipe-book>
       <shopping-list
         *ngIf="pageToDisplay == '' || pageToDisplay == 'shoppingList'"
-      ></shopping-list>
+      ></shopping-list> -->
     </div>
   </div>
 </div>
