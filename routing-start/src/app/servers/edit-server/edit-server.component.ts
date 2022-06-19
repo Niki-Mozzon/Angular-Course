@@ -41,14 +41,28 @@ export class EditServerComponent implements OnInit, ICanDeactivate {
   }
 
   ngOnInit() {
+    //console.log("Fragment: " + this.activatedRoute.snapshot.fragment); //gets fragment
+    this.getAllowEdit();
+    this.getServer();
+  }
+
+  getAllowEdit() {
     this.allowEdit = this.activatedRoute.snapshot.queryParams["allowEdit"];
-    console.log("Allow edit: " + this.allowEdit); //gets query parameters
-    console.log(this.activatedRoute.snapshot.fragment); //gets fragment
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.allowEdit = params["allowEdit"] == 1 ? true : false;
     });
-    this.activatedRoute.fragment.subscribe();
-    this.server = this.serversService.getServer(1);
+    console.log("Allow edit: " + this.allowEdit); //gets query parameters
+  }
+
+  getServer() {
+    let id: number = +this.activatedRoute.snapshot.params["id"];
+    console.log("Server id: " + id);
+    this.activatedRoute.params.subscribe((params) => {
+      id = +params["id"];
+      this.serversService.getServer(id);
+    });
+
+    this.server = this.serversService.getServer(+id);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
   }
