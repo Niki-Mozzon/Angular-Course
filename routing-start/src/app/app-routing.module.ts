@@ -57,7 +57,8 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)], //here we import the classes
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })], //here we import the classes
+  //imports: [RouterModule.forRoot(appRoutes, { useHash: true })], // "useHash" set to true help prod servers or old browsers to navigate correctly
   exports: [RouterModule],
 })
 //we created this class to store all the routes
