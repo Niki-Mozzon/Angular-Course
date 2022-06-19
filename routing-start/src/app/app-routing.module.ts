@@ -37,8 +37,16 @@ const appRoutes: Routes = [
       },
     ],
   },
-  { path: "not-found", component: PageNotFoundComponent },
-  { path: "**", redirectTo: "/not-found", pathMatch: "full" }, //important to stay at the end
+  {
+    path: "not-found",
+    component: PageNotFoundComponent,
+    data: { message: "The page was not found!" },
+  },
+  {
+    path: "**",
+    redirectTo: "/not-found",
+    pathMatch: "full",
+  }, //important to stay at the end
   //- "**" is the "wild card" so any route not covered above this one is "**"
   //pathMatch:"full" means that the path has to MATCH instead of just START WITH
 ];
