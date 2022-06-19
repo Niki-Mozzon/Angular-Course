@@ -1,24 +1,44 @@
 import { ValueConverter } from "@angular/compiler/src/render3/view/template";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 import { ServersService } from "../servers.service";
+import { ICanDeactivate } from "./can-deactivate-guard.service";
 
 @Component({
   selector: "app-edit-server",
   templateUrl: "./edit-server.component.html",
   styleUrls: ["./edit-server.component.css"],
 })
-export class EditServerComponent implements OnInit {
+//in order to have a deactivation guard we neeed to make it implement a method call "Deactivate", I did it using the inteface I made
+export class EditServerComponent implements OnInit, ICanDeactivate {
   server: { id: number; name: string; status: string };
   serverName = "";
   serverStatus = "";
   allowEdit: boolean;
+  changesSaved = false;
 
   constructor(
     private serversService: ServersService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
+  canDeactivate(): boolean | Promise<boolean> | Observable<boolean> {
+    if (!this.allowEdit) {
+      true;
+    }
+    if (
+      (this.serverName !== this.server.name ||
+        this.serverStatus !== this.server.status) &&
+      !this.changesSaved
+    ) {
+      return confirm(
+        "You didn't save your changes, if you leave without saving they'll be lost!"
+      );
+    }
+    return true;
+  }
 
   ngOnInit() {
     this.allowEdit = this.activatedRoute.snapshot.queryParams["allowEdit"];
@@ -38,5 +58,7 @@ export class EditServerComponent implements OnInit {
       name: this.serverName,
       status: this.serverStatus,
     });
+    this.changesSaved = true;
+    this.router.navigate(["../"], { relativeTo: this.activatedRoute });
   }
 }
