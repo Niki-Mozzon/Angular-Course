@@ -11,6 +11,7 @@ import { RecipeDetailComponent } from './recipe-boox/recipe-detail/recipe-detail
 import { RecipeItemComponent } from './recipe-boox/recipe-list/recipe-item/recipe-item.component';
 import { RecipeListComponent } from './recipe-boox/recipe-list/recipe-list.component';
 import { RecipeStartComponent } from './recipe-boox/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { ShoppingListService } from './shopping-list/services/shopping-list.service';
 import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
@@ -27,6 +28,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     RecipeListComponent,
     DropdownDirective,
     RecipeStartComponent,
+    RecipeEditComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ShoppingListService],
