@@ -18,8 +18,4 @@ export class RecipeItemComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {}
-
-  onRecipeSelected() {
-    this.router.navigate([this.recipe.name], { relativeTo: this.route });
-  }
 }
