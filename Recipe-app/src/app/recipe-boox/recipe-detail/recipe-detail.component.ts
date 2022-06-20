@@ -20,13 +20,9 @@ export class RecipeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const name = this.route.snapshot.params['name'];
     this.route.params.subscribe((params: Params) => {
-      this.recipe = this.recipeService
-        .getRecipes()
-        .find((x) => x.name === params['name'])!;
+      this.recipe = this.recipeService.getRecipes()[+params['name']];
     });
-    this.recipe = this.recipeService.getRecipes().find((x) => x.name === name)!;
   }
 
   setRecipe(recipe: Recipe) {
