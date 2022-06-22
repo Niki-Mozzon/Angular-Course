@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { DataService } from './data.service';
 
 import { FirstComponent } from './first.component';
 import { FirstService } from './first.service';
@@ -14,7 +15,7 @@ describe('FirstComponent', () => {
 
     fixture = TestBed.createComponent(FirstComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges(); //if uncommented the spy won't work
   });
 
   it('should create', () => {
@@ -22,6 +23,7 @@ describe('FirstComponent', () => {
   });
 
   it('should use the user from the service', () => {
+    fixture.detectChanges();
     let firstService = fixture.debugElement.injector.get(FirstService);
     expect(component.user?.name).toEqual(firstService.user.name);
   });
@@ -36,7 +38,21 @@ describe('FirstComponent', () => {
   });
 
   it('should ask to log in if logged out', () => {
+    fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('p').textContent).toContain('Please');
   });
+
+  //SPY
+  it("should return 'fake data from spy' when the dataService returns the Promise", waitForAsync(() => {
+    let dataService = fixture.debugElement.injector.get(DataService);
+    let spy = spyOn(dataService, 'getData').and.returnValue(
+      Promise.resolve('fake data from spy')
+    );
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      //the expect in the case where it's about an async function has to go here
+      expect(component.data).toBe('fake data from spy');
+    });
+  }));
 });
