@@ -1,7 +1,7 @@
 export class FirstService {
-    name:string="Ciccio";
+  user: { name: string } = { name: 'Ciccio' };
 
-    getName(){
-        return this.name;
-    }
+  getUser() {
+    return this.user;
+  }
 }
