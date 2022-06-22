@@ -1,4 +1,10 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { DataService } from './data.service';
 
 import { FirstComponent } from './first.component';
@@ -54,5 +60,16 @@ describe('FirstComponent', () => {
       //the expect in the case where it's about an async function has to go here
       expect(component.data).toBe('fake data from spy');
     });
+  }));
+
+  //SPY using fakeAsync() and Tick()
+  it("should return 'fake data from spy using tick' when the dataService returns the Promise using fakeAsync", fakeAsync(() => {
+    let dataService = fixture.debugElement.injector.get(DataService);
+    let spy = spyOn(dataService, 'getData').and.returnValue(
+      Promise.resolve('fake data from spy using tick')
+    );
+    fixture.detectChanges();
+    tick(); //tick() is like "ok, now that everything is done execute the code below"
+    expect(component.data).toBe('fake data from spy using tick');
   }));
 });
