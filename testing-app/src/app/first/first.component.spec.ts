@@ -5,10 +5,10 @@ import {
   tick,
   waitForAsync,
 } from '@angular/core/testing';
-import { DataService } from './data.service';
+import { DataService } from '../services/data.service';
 
 import { FirstComponent } from './first.component';
-import { FirstService } from './first.service';
+import { FirstService } from '../services/first.service';
 
 describe('FirstComponent', () => {
   let component: FirstComponent;

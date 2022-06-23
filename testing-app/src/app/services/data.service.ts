@@ -7,4 +7,9 @@ export class DataService {
     });
     return promise;
   }
+
+
+  getReverseString(string:string){
+    return string.split("").reverse().join("");
+  }
 }
