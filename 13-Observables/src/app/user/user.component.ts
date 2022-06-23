@@ -12,8 +12,9 @@ export class UserComponent implements OnInit, OnDestroy {
   subscription?: Subscription;
   customObs?: any;
   constructor(private route: ActivatedRoute) {}
+
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.subscription?.unsubscribe(); //I unsuscribe from the custom observer
   }
   ngOnInit(): void {
     this.route.params.subscribe((param: Params) => {
@@ -22,16 +23,34 @@ export class UserComponent implements OnInit, OnDestroy {
 
     if (this.id === 1) {
       this.customObs = new Observable((observer) => {
+        //I create the custom oberserver
         let count: number = 0;
         setInterval(() => {
           count++;
-          observer.next(count);
+          if (count > 5) {
+            observer.error('The count was bigger than 5!'); // I thow an error if bigger than 5, an error stops the observer but it doesn not complete it
+          }
+          if (count > 3) {
+            observer.complete(); // I tell when to complete the obeserver, the oberserver will unsubscribe automatically, it doesn't take args
+          }
+          observer.next(count); //trigger the observer
         }, 1000);
       });
 
-      this.subscription = this.customObs.subscribe((count: number) => {
-        console.log('Custom obs fires: ' + count);
-      });
+      this.subscription = this.customObs.subscribe(
+        (count: number) => {
+          //Do this when it gets triggered
+          console.log('Custom obs fires: ' + count);
+        },
+        (error: string) => {
+          //Do this when there is an error
+          alert(error);
+        },
+        () => {
+          //Do this once completed
+          console.log('Complete!');
+        }
+      );
     }
   }
 }
