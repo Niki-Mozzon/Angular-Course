@@ -14,7 +14,7 @@ export class UserComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) {}
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe(); //I unsuscribe from the custom observer
+    this.subscription?.unsubscribe(); //I unsuscribe from the custom observable
   }
   ngOnInit(): void {
     this.route.params.subscribe((param: Params) => {
@@ -23,7 +23,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
     if (this.id === 1) {
       this.customObs = new Observable((observer) => {
-        //I create the custom oberserver
+        //I create the custom oberservable
         let count: number = 0;
         setInterval(() => {
           count++;
@@ -44,7 +44,7 @@ export class UserComponent implements OnInit, OnDestroy {
             return data > 3; //filters all the data bigger than n
           }),
           map((data: number) => {
-            return 'Modified on pipe with map method => ' + data;
+            return 'Modified on pipe with map method => ' + data; //edits the data for the subscriber
           })
         )
         .subscribe(
