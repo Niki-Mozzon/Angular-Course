@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter, map, Observable, Subscription } from 'rxjs';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,10 @@ export class UserComponent implements OnInit, OnDestroy {
   id!: number;
   subscription?: Subscription;
   customObs?: any;
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe(); //I unsuscribe from the custom observable
@@ -31,15 +35,15 @@ export class UserComponent implements OnInit, OnDestroy {
             observer.error('The count was bigger than 5!'); // I throw an error if bigger than n, an error stops the observer but it doesn not complete it
           }
           if (count > 7) {
-            observer.complete(); // I tell when to complete the obeserver, the oberserver will unsubscribe automatically, it doesn't take args
+            observer.complete(); // I tell when to complete the observer, the observer will unsubscribe automatically, it doesn't take args
           }
-          observer.next(count); //trigger the observer
+          observer.next(count); //triggers the observer
         }, 1000);
       });
 
       this.subscription = this.customObs
         .pipe(
-          // a pipeline is a function that stays between the observer and the subscription, it influences the data just for the subscription
+          // a pipeline is a function that stays between the observable and the observer, it influences the data just for the subscription
           filter((data: number) => {
             return data > 3; //filters all the data bigger than n
           }),
@@ -62,5 +66,13 @@ export class UserComponent implements OnInit, OnDestroy {
           }
         );
     }
+  }
+
+  onActivateEmit() {
+    this.userService.activatedEmitter.emit(true);
+  }
+
+  onActivateSubject() {
+    this.userService.activatedSubject.next(true);
   }
 }
