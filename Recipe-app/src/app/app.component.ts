@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  pageToDisplay = '';
+  /*   pageToDisplay = '';
 
   display(selection: string) {
     this.pageToDisplay = selection;
-  }
+  } */
 }

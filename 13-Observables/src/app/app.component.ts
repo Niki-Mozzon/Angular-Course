@@ -10,12 +10,16 @@ import { UserService } from './user.service';
 export class AppComponent implements OnInit, OnDestroy {
   userActivatedWithEmit: boolean = false;
   userActivatedWithSubject: boolean = false;
+
+  //Create observers
+
   private emitterSubescription = new Subscription();
   private subjectSubescription = new Subscription();
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    //Subscribe observers
     this.emitterSubescription = this.userService.activatedEmitter.subscribe(
       (data) => {
         this.userActivatedWithEmit = data;

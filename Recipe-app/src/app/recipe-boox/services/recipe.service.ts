@@ -1,9 +1,11 @@
 import { EventEmitter, Inject } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Ingredient } from 'src/app/share/ingredient.model';
 import { Recipe } from '../recipe.model';
 
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
+  //recipeSelected = new EventEmitter<Recipe>();
+  recipeSelectedSubject = new Subject<Recipe>();
   private recipes: Recipe[] = [
     new Recipe(
       'Mammt',

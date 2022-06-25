@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Recipe } from 'src/app/recipe-boox/recipe.model';
 import { Ingredient } from 'src/app/share/ingredient.model';
 import { ShoppingListService } from '../services/shopping-list.service';

@@ -68,6 +68,7 @@ export class UserComponent implements OnInit, OnDestroy {
     }
   }
 
+  //Trigger observers firing events
   onActivateEmit() {
     this.userService.activatedEmitter.emit(true);
   }
