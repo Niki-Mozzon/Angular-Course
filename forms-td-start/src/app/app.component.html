@@ -3,7 +3,9 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <!-- when the form is submitted I want to retrivene itself with its data on it -->
-        <div id="user-data">
+        <!-- with user data we can group multiple inputs in one object retriveable from the ngForm model -->
+        <!-- with #userData="ngModelGroup" we'll gave access to this group of iputs without passing throuth the whole form structure -->
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <input
@@ -34,11 +36,14 @@
             <!-- I assign to the local reference the model of the input -->
             <!-- the email attribute is a directive seems like an additional validation in Angular instead of HTML5 -->
             <span *ngIf="email.touched && !email.valid"
-              >Please enter a valid email.</span
+              >Please enter valid user data fields.</span
             >
             <!-- we add a message is the value is not valid but has been touched -->
           </div>
         </div>
+        <span *ngIf="userData.touched && !email.valid"
+          >Please enter a valid email.</span
+        >
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select
