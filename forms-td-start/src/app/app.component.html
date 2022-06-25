@@ -41,7 +41,13 @@
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
-          <select id="secret" class="form-control" ngModel name="secret">
+          <select
+            id="secret"
+            class="form-control"
+            [ngModel]="'teacher'"
+            name="secret"
+          >
+            <!-- In this case [ngModel]="'teacher'" we pass the option value (not option content) to refer to the option with that value to be the default option, we can also hardcode it -->
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
