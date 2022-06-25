@@ -18,6 +18,8 @@ import { TemplateDrivenComponent } from './template-driven/template-driven.compo
     AssignmentComponent,
     ReactiveComponent,
   ],
+  //ReactiveFormModule only for Reactive Forms
+  //FormsModule only for Template Driven Forms
   imports: [BrowserModule, FormsModule, AppRoutes, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
