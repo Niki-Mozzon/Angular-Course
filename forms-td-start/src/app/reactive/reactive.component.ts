@@ -20,4 +20,10 @@ export class ReactiveComponent implements OnInit {
       gender: new FormControl('Male'),
     });
   }
+
+  onSubmit() {
+    //accessing the form
+    //We don't need to retrive the form because it doesn't follow the building principle of Angular, instead, we create it and configure directly from the class .ts so it is already updated
+    console.log(this.signupForm);
+  }
 }
