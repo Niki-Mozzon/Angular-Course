@@ -12,6 +12,7 @@ export class AppComponent {
   form?: NgForm;
   //}
   answerQuestion: string = 'Placeholder';
+  genders: string[] = ['Male', 'Female'];
 
   suggestUserName() {
     const suggestedName = 'Superuser';

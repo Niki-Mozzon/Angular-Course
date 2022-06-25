@@ -28,7 +28,6 @@
               class="form-control"
               ngModel
               name="email"
-              required
               email
               #email="ngModel"
             />
@@ -65,7 +64,15 @@
             rows="3"
             [(ngModel)]="answerQuestion"
           ></textarea>
-          <span> {{ answerQuestion }}</span>
+          <span>Your answer was: {{ answerQuestion }}</span>
+        </div>
+        <div class="form-group">
+          <div class="form-control" *ngFor="let gender of genders">
+            <!-- [value]="gender" we tell what this value is bind to -->
+            <!-- ngModel="Male" we tell what the default is -->
+            <input type="radio" name="gender" ngModel="Male" [value]="gender" />
+            <label for="gender">{{ gender }}</label>
+          </div>
         </div>
         <button class="btn btn-primary" [disabled]="!f.valid" type="submit">
           Submit
