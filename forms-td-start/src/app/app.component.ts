@@ -26,7 +26,7 @@ export class AppComponent {
     } 
     */
 
-  //overrites just specific fields
+  //overrites just specific fields  BEST!
   suggestUserName() {
     this.form?.form.patchValue({ userData: { username: 'superciaone' } });
   }
@@ -35,5 +35,7 @@ export class AppComponent {
   onSubmit(form: NgForm) {
     console.log(form);
     console.log(this.form);
+    //use datas from form!
+    console.log(this.form?.value.userData.username);
   }
 }
