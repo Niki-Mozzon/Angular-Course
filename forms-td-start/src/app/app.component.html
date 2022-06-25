@@ -25,11 +25,16 @@
               class="form-control"
               ngModel
               name="email"
-              email
               required
+              email
+              #email="ngModel"
             />
-            <!-- to implement -->
-            <span *ngIf="">Please enter a valid email.</span>
+            <!-- I assign to the local reference the model of the input -->
+            <!-- the mail seems attribute seems like an addiotional validation -->
+            <span *ngIf="email.touched && !email.valid"
+              >Please enter a valid email.</span
+            >
+            <!-- we add a message is the value is not valid but has been touched -->
           </div>
         </div>
         <div class="form-group">
