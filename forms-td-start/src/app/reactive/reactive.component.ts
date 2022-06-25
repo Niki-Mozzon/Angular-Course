@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -15,8 +15,11 @@ export class ReactiveComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      username: new FormControl('bella'),
-      email: new FormControl(null),
+      username: new FormControl('bella', Validators.required), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
+      email: new FormControl('null@test.rt', [
+        Validators.required,
+        Validators.email,
+      ]),
       gender: new FormControl('Male'),
     });
   }
