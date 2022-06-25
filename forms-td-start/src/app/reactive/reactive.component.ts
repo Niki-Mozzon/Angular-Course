@@ -8,10 +8,11 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['reactive.component.css'],
 })
 export class ReactiveComponent implements OnInit {
-  genders = ['male', 'female'];
+  genders = ['Male', 'Female'];
 
   //The whole form is stored in this variable
-  signupForm?: FormGroup;
+  signupForm!: FormGroup;
+
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       username: new FormControl('bella'),
