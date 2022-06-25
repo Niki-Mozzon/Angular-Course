@@ -37,5 +37,9 @@ export class AppComponent {
     console.log(this.form);
     //use datas from form!
     console.log(this.form?.value.userData.username);
+    //reset removes all fields and restores the touched status to false
+    //this.form?.form.reset();
+    //this resetes not only resets the fields but add some default values to it
+    this.form?.form.reset({ gender: 'Female' });
   }
 }
