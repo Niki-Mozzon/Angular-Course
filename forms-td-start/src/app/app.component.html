@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <!-- when the form is submitted I want to retrivene itself with its data on it -->
         <div id="user-data">
           <div class="form-group">
             <label for="username">Username</label>
@@ -29,8 +30,9 @@
               email
               #email="ngModel"
             />
+            <!-- ngModel to tell Angular this is an important value for my form -->
             <!-- I assign to the local reference the model of the input -->
-            <!-- the mail seems attribute seems like an addiotional validation -->
+            <!-- the email attribute is a directive seems like an additional validation in Angular instead of HTML5 -->
             <span *ngIf="email.touched && !email.valid"
               >Please enter a valid email.</span
             >
