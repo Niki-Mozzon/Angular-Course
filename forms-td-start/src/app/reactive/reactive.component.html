@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- [formGroup]="signupForm" Links the form to the ts class FormGroup -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <!-- formGroupName="userCredentials" to indicate this is a nested groupForm in the main form -->
+        <!-- formGroupName="userCredentials" to indicate which nested groupForm is on the main groupForm of the .ts file -->
         <div formGroupName="userCredentials">
           <div class="form-group">
             <label for="username">Username:</label>
@@ -67,6 +67,27 @@
               gender
             }}
           </label>
+        </div>
+        <div class="form-group" formArrayName="hobbies">
+          <!-- formArrayName="hobbies" I declare that this div is linked to the FormArrayName hobbies in the .ts file -->
+          <label for="hobbies">Your hobbies:</label>
+          <div *ngFor="let hobby of getArrayControls(); let i = index">
+            <!-- I loop through the hobbies -->
+            <!--  [formControlName]="i" : I assign the key of the array to the value -->
+            <input
+              class="form-control"
+              type="text"
+              [formControlName]="i"
+              id=""
+            />
+          </div>
+          <!--  (click)="onAddHobby()": I add a control with that method -->
+          <input
+            type="button"
+            (click)="onAddHobby()"
+            value="Add hobby"
+            class="btn btn-primary"
+          />
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>

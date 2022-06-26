@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -25,6 +25,7 @@ export class ReactiveComponent implements OnInit {
         Validators.email,
       ]),
       gender: new FormControl('Male'),
+      hobbies: new FormArray([]),
     });
   }
 
@@ -32,5 +33,17 @@ export class ReactiveComponent implements OnInit {
     //accessing the form
     //We don't need to retrive the form because it doesn't follow the building principle of Angular, instead, we create it and configure directly from the class .ts so it is already updated
     console.log(this.signupForm);
+  }
+
+  getArrayControls() {
+    return (<FormArray>this.signupForm.get('hobbies')).controls;
+  }
+
+  onAddHobby() {
+    const control = new FormControl(null, [
+      Validators.minLength(3),
+      Validators.required,
+    ]); //I create the control I wanna add (I can specify the validators as well)
+    (<FormArray>this.signupForm.get('hobbies')).push(control); // I push  the FormControl inside the hobbies FormArray
   }
 }
