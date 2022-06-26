@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class ReactiveComponent implements OnInit {
   genders = ['Male', 'Female'];
+  forbiddenUsernames: string[] = ['Chris', 'Anna'];
 
   //The whole form is stored in this variable
   signupForm!: FormGroup;
@@ -17,7 +18,10 @@ export class ReactiveComponent implements OnInit {
     this.signupForm = new FormGroup({
       //nesting a formGroup inside another formGroup
       userCredentials: new FormGroup({
-        username: new FormControl('bella', Validators.required), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
+        username: new FormControl('bella', [
+          Validators.required,
+          this.usernameValidator.bind(this), //here we add our own validator, we add .bind(this), because since we pass it as reference it will take the reference of the angular object that will execute it!
+        ]), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
         password: new FormControl('****', Validators.minLength(3)),
       }),
       email: new FormControl('null@test.rt', [
@@ -45,5 +49,16 @@ export class ReactiveComponent implements OnInit {
       Validators.required,
     ]); //I create the control I wanna add (I can specify the validators as well)
     (<FormArray>this.signupForm.get('hobbies')).push(control); // I push  the FormControl inside the hobbies FormArray
+  }
+
+  //with this method we create our own validator, specifically we check if a control contains a value we forbade
+  //it must return this object
+  usernameValidator(control: FormControl): { [s: string]: boolean } | null {
+    if (this.forbiddenUsernames.includes(control.value)) {
+      //it must return the object to true if has to be forbidden
+      return { nameIsForbidden: true };
+    }
+    //it must return null if it's ok
+    return null;
   }
 }
