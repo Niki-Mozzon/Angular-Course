@@ -22,8 +22,31 @@
                 signupForm.get('userCredentials.username')!.touched
               "
               class="help-block"
-              >Please enter a valid username.</label
             >
+              <!--   *ngIf="
+                  signupForm.get('userCredentials.username')!.errors![
+                    'required'
+                  ]
+                " render a message based on the error retrieved -->
+              <label
+                *ngIf="
+                  signupForm.get('userCredentials.username')!.errors![
+                    'required'
+                  ]
+                "
+              >
+                Please enter a username.
+              </label>
+              <label
+                *ngIf="
+                  signupForm.get('userCredentials.username')!.errors![
+                    'nameIsForbidden'
+                  ]
+                "
+              >
+                Please enter a not forbidden username.
+              </label>
+            </label>
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
@@ -89,7 +112,13 @@
             class="btn btn-primary"
           />
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button
+          class="btn btn-primary"
+          [disabled]="!signupForm.valid"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   </div>
