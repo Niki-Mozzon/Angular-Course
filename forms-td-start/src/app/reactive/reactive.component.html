@@ -3,24 +3,46 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- [formGroup]="signupForm" Links the form to the ts class FormGroup -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            formControlName="username"
-            id="username"
-            class="form-control"
-          />
-          <!-- formControlName="username" links to the control a control from the ts class -->
-          <label
-            for="username"
-            *ngIf="
-              !signupForm.get('username')!.valid &&
-              signupForm.get('username')!.touched
-            "
-            class="help-block"
-            >Please enter a valid username.</label
-          >
+        <!-- formGroupName="userCredentials" to indicate this is a nested groupForm in the main form -->
+        <div formGroupName="userCredentials">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              formControlName="username"
+              id="username"
+              class="form-control"
+            />
+            <!-- formControlName="username" links to the control a control from the ts class -->
+            <!-- 'userCredentials.username': to access the properties of a nested form group  -->
+            <label
+              for="username"
+              *ngIf="
+                !signupForm.get('userCredentials.username')!.valid &&
+                signupForm.get('userCredentials.username')!.touched
+              "
+              class="help-block"
+              >Please enter a valid username.</label
+            >
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              formControlName="password"
+              id="password"
+              class="form-control"
+            />
+            <label
+              for="password"
+              class="help-block"
+              *ngIf="
+                !signupForm.get('userCredentials.password')?.valid &&
+                signupForm.get('userCredentials.password')?.touched
+              "
+              >The password must be at least of 3 characters!</label
+            >
+          </div>
         </div>
         <div class="form-group">
           <label for="email">Email</label>

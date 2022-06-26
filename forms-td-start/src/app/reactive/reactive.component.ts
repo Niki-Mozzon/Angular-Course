@@ -15,7 +15,11 @@ export class ReactiveComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      username: new FormControl('bella', Validators.required), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
+      //nesting a formGroup inside another formGroup
+      userCredentials: new FormGroup({
+        username: new FormControl('bella', Validators.required), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
+        password: new FormControl('****', Validators.minLength(3)),
+      }),
       email: new FormControl('null@test.rt', [
         Validators.required,
         Validators.email,
