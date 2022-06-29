@@ -7,6 +7,7 @@ import { AppRoutes } from './app-routes.module';
 import { AppComponent } from './app.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { HeaderComponent } from './header/header.component';
+import { AssignmentReactiveComponent } from './reactive/assignment-reactive/assignment-reactive.component';
 import { ReactiveComponent } from './reactive/reactive.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 
@@ -17,6 +18,7 @@ import { TemplateDrivenComponent } from './template-driven/template-driven.compo
     TemplateDrivenComponent,
     AssignmentComponent,
     ReactiveComponent,
+    AssignmentReactiveComponent,
   ],
   //ReactiveFormModule only for Reactive Forms
   //FormsModule only for Template Driven Forms

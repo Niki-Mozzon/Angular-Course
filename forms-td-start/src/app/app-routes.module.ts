@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { AssignmentReactiveComponent } from './reactive/assignment-reactive/assignment-reactive.component';
 import { ReactiveComponent } from './reactive/reactive.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'example',
         component: ReactiveComponent,
+      },
+      {
+        path: 'assignment',
+        component: AssignmentReactiveComponent,
       },
     ],
   },
