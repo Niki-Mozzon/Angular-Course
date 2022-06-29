@@ -24,4 +24,18 @@ export class ShoppingListService {
     //this.ingredientsChanged.emit(this.getIngredients());
     this.ingredientsChangedSubject.next(this.getIngredients());
   }
+
+  removeIngredient(ingredient: Ingredient) {
+    const element = this.ingredients.find((x) => x.name == ingredient.name);
+    if (element) {
+      if (ingredient.amount >= element.amount) {
+        const index = this.ingredients.indexOf(element);
+
+        this.ingredients.splice(index, 1);
+      } else {
+        element.amount -= Number(ingredient.amount);
+      }
+    }
+    this.ingredientsChangedSubject.next(this.getIngredients());
+  }
 }

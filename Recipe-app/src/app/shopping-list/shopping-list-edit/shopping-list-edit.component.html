@@ -1,23 +1,46 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form [formGroup]="shoppingForm" (ngSubmit)="onAddItem()">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input #itemName type="text" id="name" class="form-control" />
+          <input
+            formControlName="itemName"
+            type="text"
+            id="itemName"
+            class="form-control"
+          />
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input #itemAmount type="number" id="amount" class="form-control" />
+          <input
+            formControlName="itemQuantity"
+            type="number"
+            id="itemQuantity"
+            class="form-control"
+          />
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" (click)="onAddItem()" type="submit">
+          <button
+            [disabled]="!shoppingForm.valid"
+            class="btn btn-success"
+            type="submit"
+          >
             Add
           </button>
-          <button class="btn btn-danger" type="button">Delete</button>
-          <button class="btn btn-primary" type="button">Clear</button>
+          <button
+            [disabled]="!shoppingForm.valid"
+            class="btn btn-danger"
+            (click)="onRemoveItem()"
+            type="button"
+          >
+            Delete
+          </button>
+          <button class="btn btn-primary" (click)="clearForm()" type="button">
+            Clear
+          </button>
         </div>
       </div>
     </form>
