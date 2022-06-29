@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reactive',
@@ -18,10 +24,14 @@ export class ReactiveComponent implements OnInit {
     this.signupForm = new FormGroup({
       //nesting a formGroup inside another formGroup
       userCredentials: new FormGroup({
-        username: new FormControl('bella', [
-          Validators.required,
-          this.usernameValidator.bind(this), //here we add our own validator, we add .bind(this), because since we pass it as reference it will take the reference of the angular object that will execute it!
-        ]), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
+        username: new FormControl(
+          'bella',
+          [
+            Validators.required,
+            this.usernameValidator.bind(this), //here we add our own validator, we add .bind(this), because since we pass it as reference it will take the reference of the angular object that will execute it!
+          ],
+          this.usernameValidatorAsync
+        ), //Despite they are methods you don't use brakets because you don't need to execute instead you just have to pass it as reference
         password: new FormControl('****', Validators.minLength(3)),
       }),
       email: new FormControl('null@test.rt', [
@@ -60,5 +70,19 @@ export class ReactiveComponent implements OnInit {
     }
     //it must return null if it's ok
     return null;
+  }
+
+  usernameValidatorAsync(
+    control: AbstractControl
+  ): Observable<any> | Promise<any> {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'ciao') {
+          resolve({ nameIsForbidden: true });
+        }
+        resolve(null);
+      }, 5000);
+    });
+    return promise;
   }
 }
