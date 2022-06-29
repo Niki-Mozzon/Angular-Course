@@ -41,6 +41,19 @@ export class ReactiveComponent implements OnInit {
       gender: new FormControl('Male'),
       hobbies: new FormArray([]),
     });
+    /*   this.signupForm.valueChanges.subscribe((data) => {   //this observable at each change shows any change on the form
+      console.log(data);
+    }); */
+
+    /*  this.signupForm.statusChanges.subscribe((status) => {
+      //this observable at each change shows if the item changed is valid-invalid-pending..
+      console.log(status);
+    }); */
+
+    this.signupForm.controls['gender'].valueChanges.subscribe((gender) => {
+      //I can use observable on a specific control
+      console.log(gender);
+    });
   }
 
   onSubmit() {
