@@ -20,7 +20,7 @@ export class ShoppingListEditComponent implements OnInit {
     this.shoppingListService.addIngredient(
       new Ingredient(
         this.itemNameRef.nativeElement.value,
-        this.itemAmountRef.nativeElement.value
+        this.itemAmountRef.nativeElement.value //
       )
     );
   }
