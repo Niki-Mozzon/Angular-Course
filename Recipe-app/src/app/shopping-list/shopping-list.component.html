@@ -3,7 +3,10 @@
     <shopping-list-edit></shopping-list-edit>
     <hr />
     <ul class="list-group">
-      <a class="list-group-item" *ngFor="let ingredient of ingredients"
+      <a
+        (click)="onSelectIngredient(i)"
+        class="list-group-item"
+        *ngFor="let ingredient of ingredients; let i = index"
         >{{ ingredient.name }} ({{ ingredient.amount }})</a
       >
     </ul>

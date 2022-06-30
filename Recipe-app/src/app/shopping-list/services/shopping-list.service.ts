@@ -9,6 +9,7 @@ export class ShoppingListService {
   ];
   //ingredientsChanged = new EventEmitter<Ingredient[]>();
   ingredientsChangedSubject = new Subject<Ingredient[]>();
+  ingredientSelected = new Subject<Ingredient>();
 
   getIngredients() {
     return this.ingredients.slice();
@@ -23,5 +24,11 @@ export class ShoppingListService {
     }
     //this.ingredientsChanged.emit(this.getIngredients());
     this.ingredientsChangedSubject.next(this.getIngredients());
+  }
+
+  triggerSelected(id: number) {
+    const ingredient = this.getIngredients()[id];
+    this.ingredientSelected.next(ingredient);
+    console.log('triggerSelected');
   }
 }
