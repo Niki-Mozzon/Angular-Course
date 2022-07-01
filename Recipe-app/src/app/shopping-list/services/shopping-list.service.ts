@@ -20,7 +20,7 @@ export class ShoppingListService {
     if (!element) {
       this.ingredients.push(ingredient);
     } else {
-      element.amount += Number(ingredient.amount);
+      element.amount = Number(ingredient.amount);
     }
     //this.ingredientsChanged.emit(this.getIngredients());
     this.ingredientsChangedSubject.next(this.getIngredients());
@@ -29,6 +29,5 @@ export class ShoppingListService {
   triggerSelected(id: number) {
     const ingredient = this.getIngredients()[id];
     this.ingredientSelected.next(ingredient);
-    console.log('triggerSelected');
   }
 }

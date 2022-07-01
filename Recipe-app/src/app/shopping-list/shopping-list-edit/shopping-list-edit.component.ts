@@ -1,13 +1,11 @@
 import {
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subscriber, Subscription } from 'rxjs';
-import { Recipe } from 'src/app/recipe-boox/recipe.model';
+import {  Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/share/ingredient.model';
 import { ShoppingListService } from '../services/shopping-list.service';
 
@@ -20,18 +18,30 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   itemSubscriber = new Subscription();
   @ViewChild('f')
   f!: NgForm;
+  editMode:boolean=false;
   constructor(private shoppingListService: ShoppingListService) {}
   ngOnDestroy(): void {
     this.itemSubscriber.unsubscribe();
   }
   ngOnInit(): void {
     this.shoppingListService.ingredientSelected.subscribe((ing: Ingredient) => {
-      this.f.setValue({ itemQuantity: ing.amount, itemName: ing.name });
+      this.f.setValue({ itemQuantity:0, itemName: ing.name });
+      this.editMode=true;
+
     });
   }
   onAddItem(form: NgForm) {
     this.shoppingListService.addIngredient(
-      new Ingredient(form.value.set.itemName, form.value.itemQuantity)
+      new Ingredient(form.value.itemName, form.value.itemQuantity)
     );
+    this.f.reset();
+    this.editMode=false;
+  }
+
+  flagAddMode(event:any){
+    this.editMode=false;
+    console.log(event);
+    
+    
   }
 }
