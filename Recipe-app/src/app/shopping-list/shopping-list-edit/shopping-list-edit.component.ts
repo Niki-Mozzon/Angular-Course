@@ -1,11 +1,6 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {  Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/share/ingredient.model';
 import { ShoppingListService } from '../services/shopping-list.service';
 
@@ -18,16 +13,15 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   itemSubscriber = new Subscription();
   @ViewChild('f')
   f!: NgForm;
-  editMode:boolean=false;
+  editMode: boolean = false;
   constructor(private shoppingListService: ShoppingListService) {}
   ngOnDestroy(): void {
     this.itemSubscriber.unsubscribe();
   }
   ngOnInit(): void {
     this.shoppingListService.ingredientSelected.subscribe((ing: Ingredient) => {
-      this.f.setValue({ itemQuantity:0, itemName: ing.name });
-      this.editMode=true;
-
+      this.f.setValue({ itemQuantity: 0, itemName: ing.name });
+      this.editMode = true;
     });
   }
   onAddItem(form: NgForm) {
@@ -35,13 +29,15 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
       new Ingredient(form.value.itemName, form.value.itemQuantity)
     );
     this.f.reset();
-    this.editMode=false;
+    this.editMode = false;
   }
 
-  flagAddMode(event:any){
-    this.editMode=false;
-    console.log(event);
-    
-    
+  flagAddMode(event: any) {
+    this.editMode = false;
+  }
+
+  clear() {
+    this.editMode = false;
+    this.f.reset();
   }
 }
