@@ -26,6 +26,15 @@ export class ShoppingListService {
     this.ingredientsChangedSubject.next(this.getIngredients());
   }
 
+  deleteIngredient(name: string) {
+    const elementIndex = this.ingredients.findIndex((x) => x.name == name);
+
+    if (elementIndex > -1) {
+      this.ingredients.splice(elementIndex, 1);
+      this.ingredientsChangedSubject.next(this.getIngredients());
+    }
+  }
+
   triggerSelected(id: number) {
     const ingredient = this.getIngredients()[id];
     this.ingredientSelected.next(ingredient);
