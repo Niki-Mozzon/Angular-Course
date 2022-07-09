@@ -32,15 +32,13 @@ export class RecipeEditComponent implements OnInit {
       ingredientsRecipe: new FormArray(
         this.recipe?.ingredients.map((ing) => {
           return new FormGroup({
-            nameIngredient: new FormControl(ing.name),
-            amountIngredient: new FormControl(ing.amount),
+            nameIngredient: new FormControl(ing.name, Validators.required),
+            amountIngredient: new FormControl(ing.amount, [
+              Validators.required,
+              Validators.min(0.1),
+            ]),
           });
-        }) || [
-          new FormGroup({
-            nameIngredient: new FormControl(),
-            amountIngredient: new FormControl(),
-          }),
-        ]
+        }) || []
       ),
     });
   }
@@ -56,8 +54,11 @@ export class RecipeEditComponent implements OnInit {
   addIngredientControl() {
     (<FormArray>this.form.get('ingredientsRecipe')).controls.push(
       new FormGroup({
-        nameIngredient: new FormControl(),
-        amountIngredient: new FormControl(),
+        nameIngredient: new FormControl(null, Validators.required),
+        amountIngredient: new FormControl(null, [
+          Validators.required,
+          Validators.min(0.1),
+        ]),
       })
     );
   }
