@@ -29,8 +29,24 @@ export class RecipeEditComponent implements OnInit {
       nameRecipe: new FormControl(this.recipe?.name, Validators.required),
       imageURLRecipe: new FormControl(this.recipe?.imagePath),
       descriptionRecipe: new FormControl(this.recipe?.description),
-      ingredients: new FormArray([]),
+      ingredientsRecipe: new FormArray(
+        this.recipe?.ingredients.map((ing) => {
+          return new FormGroup({
+            nameIngredient: new FormControl(ing.name),
+            amountIngredient: new FormControl(ing.amount),
+          });
+        }) || [
+          new FormGroup({
+            nameIngredient: new FormControl(),
+            amountIngredient: new FormControl(),
+          }),
+        ]
+      ),
     });
+  }
+
+  getIngredientsControlArray() {
+    return (<FormArray>this.form.get('ingredientsRecipe')).controls;
   }
 
   onSubmit() {
