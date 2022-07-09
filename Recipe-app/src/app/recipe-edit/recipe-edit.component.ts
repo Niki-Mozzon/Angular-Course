@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Recipe } from '../recipe-boox/recipe.model';
 import { RecipeService } from '../recipe-boox/services/recipe.service';
@@ -11,6 +12,7 @@ import { RecipeService } from '../recipe-boox/services/recipe.service';
 export class RecipeEditComponent implements OnInit {
   recipe?: Recipe;
   editMode: boolean = false;
+  form!: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,8 +22,14 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       const id = params['id'];
-      this.recipeService.getRecipes()[+id];
-      this.editMode = params['id'] != null;
+      this.recipe = this.recipeService.getRecipes()[+id];
+      //this.editMode = params['id'] != null;
+    });
+    this.form = new FormGroup({
+      nameRecipe: new FormControl(this.recipe?.name, Validators.required),
+      imageURLRecipe: new FormControl(this.recipe?.imagePath),
+      descriptionRecipe: new FormControl(this.recipe?.description),
+      ingredients: new FormArray([]),
     });
   }
 }
