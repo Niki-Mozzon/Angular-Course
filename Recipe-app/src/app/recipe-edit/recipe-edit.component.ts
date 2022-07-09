@@ -32,4 +32,8 @@ export class RecipeEditComponent implements OnInit {
       ingredients: new FormArray([]),
     });
   }
+
+  onSubmit() {
+    console.log(this.form.valid);
+  }
 }
